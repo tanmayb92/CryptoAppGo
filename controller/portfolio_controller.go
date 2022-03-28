@@ -42,6 +42,7 @@ func CreatePortfolio(w http.ResponseWriter, r *http.Request) {
 	portfolio.SetUserId(uint(val_uint))
 	database.Connector.Create(portfolio)
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("fetch_all_portfolios", r.URL.String())
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(portfolio)
 }

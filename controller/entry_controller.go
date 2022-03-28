@@ -39,6 +39,7 @@ func CreateEntry(w http.ResponseWriter, r *http.Request) {
 	entry.SetPortfolioId(uint(val_uint))
 	database.Connector.Create(entry)
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("fetch_all_entry", r.URL.String())
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(entry)
 }
