@@ -28,3 +28,8 @@ func MigratePortfolio(table *entity.Portfolio) {
 	Connector.AutoMigrate(&table)
 	log.Println("Table migrated")
 }
+
+func MigrateEntry(table *entity.Entry) {
+	Connector.AutoMigrate(&table)
+	log.Println("Table migrated")
+}

@@ -33,6 +33,11 @@ func initaliseHandlers(router *mux.Router) {
 	router.HandleFunc("/user/{id}/portfolio", controllers.CreatePortfolio).Methods("POST")
 	router.HandleFunc("/user/{id}/portfolio", controllers.GetAllPortfolios).Methods("GET")
 	router.HandleFunc("/user/{id}/portfolio/{pid}", controllers.GetPortfolioByID).Methods("GET")
+
+	//entry api
+	router.HandleFunc("/user/{id}/portfolio/{pid}/entry", controllers.CreateEntry).Methods("POST")
+	router.HandleFunc("/user/{id}/portfolio/{pid}/entry", controllers.GetEnteries).Methods("GET")
+	router.HandleFunc("/user/{id}/portfolio/{pid}/entry/{eid}", controllers.GetEntryByID).Methods("GET")
 }
 
 func intializeDbConnection() {
@@ -51,4 +56,5 @@ func intializeDbConnection() {
 	}
 	database.MigrateUser(&entity.User{})
 	database.MigratePortfolio(&entity.Portfolio{})
+	database.MigrateEntry(&entity.Entry{})
 }
